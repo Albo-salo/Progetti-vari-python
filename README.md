@@ -1,2 +1,2 @@
 # Progetti-vari-python
-Tutti i miei cari progetti fatti con Python 
+Tutti i miei progetti vari fatti con Python 
