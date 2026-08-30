@@ -1,0 +1,20 @@
+import matplotlib.pyplot as plt
+import fastf1
+import os
+os.makedirs('cache',exist_ok=True)
+fastf1.Cache.enable_cache('cache')
+session=fastf1.get_session(2025, 'Monza Gran Prix', 'Q')
+session.load()
+giro=session.laps.pick_driver('ANT').pick_fastest()
+giro2=session.laps.pick_driver('LEC').pick_fastest()
+telemetria=giro.get_telemetry().add_distance()
+telemetria2=giro2.get_telemetry().add_distance()
+plt.plot(telemetria['Distance'],telemetria['Speed'],color='blue')
+plt.plot(telemetria2['Distance'],telemetria2['Speed'],color='red')
+plt.title('Confronto giro Antonelli/LeclercS')
+plt.xlabel('distanza (m)')
+plt.ylabel('velocità (Km/h)')
+plt.grid(True)
+plt.show()
+input('Premi la X per uscire')
+plt.close()
